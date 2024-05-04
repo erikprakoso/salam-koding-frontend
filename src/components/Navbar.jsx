@@ -50,7 +50,7 @@ export default function Navbar() {
                 className="text-lg font-bold text-gray-900 cursor-pointer"
                 onClick={handleHome}
               >
-                Salam Koding
+                SalamKoding
               </h3>
             </div>
             <div className="hidden sm:ml-6 sm:block">
