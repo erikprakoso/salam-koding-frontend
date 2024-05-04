@@ -63,7 +63,11 @@ export default function ArticleDetailCard() {
                               text={child.text}
                               onCopy={() => handleCopy(index)}
                             >
-                              <button className="px-2 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+                              <button
+                                className={`px-2 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600 ${
+                                  copiedStates[index] ? "font-bold" : ""
+                                }`}
+                              >
                                 {copiedStates[index] ? "Copied!" : <FaCopy />}
                               </button>
                             </CopyToClipboard>
@@ -87,7 +91,18 @@ export default function ArticleDetailCard() {
                           </div>
                         </div>
                       ) : (
-                        child.text
+                        <span
+                          key={childIndex}
+                          className={
+                            child.code
+                              ? "px-2 py-1 rounded-md"
+                              : child.bold // Check if bold is true
+                              ? "font-bold" // Apply font-bold class if true
+                              : ""
+                          }
+                        >
+                          {child.text}
+                        </span>
                       )}
                     </div>
                   ))}
