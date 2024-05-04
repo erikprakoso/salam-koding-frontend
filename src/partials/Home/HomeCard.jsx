@@ -6,9 +6,13 @@ export default function HomeCard() {
   const articles = useQuery(() => APIArticle.findArticles());
   const { data } = articles;
 
+  const handleArticleDetail = (id) => {
+    window.location.href = `/article/${id}`;
+  };
+
   return (
     <>
-      <div className="bg-gray-200">
+      <div className="bg-gray-100">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-1">
             {data?.attributes.map((item) => (
@@ -16,7 +20,10 @@ export default function HomeCard() {
                 key={item?.id}
                 className="group relative bg-white overflow-hidden shadow rounded-lg"
               >
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
+                <div
+                  className="aspect-h-1 aspect-w-1 w-full overflow-hidden bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60"
+                  onClick={() => handleArticleDetail(item?.id)}
+                >
                   <img
                     src={
                       item?.thumbnail &&
@@ -39,7 +46,11 @@ export default function HomeCard() {
                         </button>
                       ))}
                       <h3 className="mt-4 text-sm font-medium text-gray-900">
-                        <a href="#" className="group-hover:underline">
+                        <a
+                          href="#"
+                          className="group-hover:underline"
+                          onClick={() => handleArticleDetail(item?.id)}
+                        >
                           {item?.title}
                         </a>
                       </h3>

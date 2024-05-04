@@ -26,6 +26,18 @@ const APIArticle = {
       const { stack } = err;
       throw new ApiError(status, statusText, message, true, stack);
     }
+  },
+
+  async findArticleById(id) {
+    try {
+      const response = await axiosInstance.get(`/articles/view/${id}`);
+      return response.data;
+    } catch (err) {
+      const { status, statusText } = err.response;
+      const { message } = err.response.data.error;
+      const { stack } = err;
+      throw new ApiError(status, statusText, message, true, stack);
+    }
   }
 };
 
