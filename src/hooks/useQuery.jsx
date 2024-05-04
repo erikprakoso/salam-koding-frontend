@@ -38,6 +38,10 @@ const useQuery = (fn) => {
     }
   }, [fn, isFetched, isRefetch]);
 
+  const refetch = () => {
+    setIsRefetch(true);
+  };
+
   return {
     isIdle,
     isLoading,
@@ -46,7 +50,7 @@ const useQuery = (fn) => {
     error,
     data,
     meta,
-    setIsRefetch,
+    refetch,
   };
 };
 
