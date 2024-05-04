@@ -48,7 +48,7 @@ export default function ArticleButton({ currentPage, totalPages, onPageChange })
           href="#"
           onClick={() => onPageChange(i)}
           className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${
-            i === currentPage ? 'bg-gray-600 text-white' : 'text-gray-900'
+            i === currentPage ? 'bg-gray-600 text-gray-400' : 'text-gray-900'
           } hover:bg-gray-50 focus:z-20 focus:outline-offset-0 bg-white`}
         >
           {i}
@@ -75,7 +75,7 @@ export default function ArticleButton({ currentPage, totalPages, onPageChange })
   };
 
   return (
-    <div className="bg-gray-200 flex justify-center py-2 border-t border-gray-200 px-4 sm:px-6">
+    <div className="bg-gray-100 flex justify-center py-2 border-t border-gray-200 px-4 sm:px-6">
       <div>
         <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
           <a
