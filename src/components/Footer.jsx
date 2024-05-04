@@ -67,7 +67,7 @@ export default function Footer() {
           </div>
           {/* Copyright text */}
           <div className="text-center text-gray-400 text-sm mt-8">
-            &copy; {new Date().getFullYear()} Salam Koding. All rights reserved.
+            &copy; {new Date().getFullYear()} SalamKoding. All rights reserved.
           </div>
         </div>
         <div
