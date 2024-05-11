@@ -102,7 +102,7 @@ export default function ArticleDetailCard() {
                 {/* Menampilkan date */}
                 <span className="font-bold text-xs">
                   {new Date(data?.attributes?.publishedAt).toLocaleDateString(
-                    "en-US",
+                    "id-ID",
                     {
                       year: "numeric",
                       month: "long",
