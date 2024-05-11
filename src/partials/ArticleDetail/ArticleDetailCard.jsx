@@ -68,6 +68,10 @@ export default function ArticleDetailCard() {
     }, 1500);
   };
 
+  const handleAuthor = () => {
+    window.location.href = `/author/${data?.attributes?.author?.data?.id}`;
+  };
+
   return (
     <div className="bg-gray-100">
       <div className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
@@ -90,9 +94,11 @@ export default function ArticleDetailCard() {
               />
               <p className="ml-6 mt-2 text-md text-gray-500">
                 {/* Menampilkan fullname */}
-                <span className="font-bold text-md">
-                  {data?.attributes?.author?.data?.attributes?.fullname}
-                </span>
+                <a onClick={handleAuthor} className="cursor-pointer">
+                  <span className="font-bold text-md">
+                    {data?.attributes?.author?.data?.attributes?.fullname}
+                  </span>
+                </a>
                 {/* Menampilkan position */}
                 <br />
                 <span className="italic text-sm">
