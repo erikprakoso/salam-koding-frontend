@@ -2,9 +2,11 @@ import axiosInstance from "../networks/axiosInstance";
 import ApiError from "../utils/ApiError";
 
 const APIArticle = {
-  async findArticles() {
+  async findArticles(sort, page, pageSize) {
     try {
-      const response = await axiosInstance.get("/articles/view/all");
+      const response = await axiosInstance.get(
+        `/articles?sort=publishedAt:${sort}&pagination[withCount]=true&pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=thumbnail&populate=tags`
+      );
       return response.data;
     } catch (err) {
       const { status, statusText } = err.response;
