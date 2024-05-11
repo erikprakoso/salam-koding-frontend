@@ -13,7 +13,21 @@ export default function SetupRoutes() {
   useEffect(() => {
     switch (location.pathname) {
       case "/":
-        document.title = "Salam Koding";
+        document.title =
+          "SalamKoding.com - Website Belajar Coding Bahasa Indonesia Terstruktur.";
+        break;
+      case "/article":
+        document.title = "Artikel - SalamKoding.com";
+        break;
+      case "/search":
+        document.title = "Pencarian - SalamKoding.com";
+        break;
+      default:
+        if (location.pathname.startsWith("/article/")) {
+          document.title = "Detail Artikel - SalamKoding.com";
+        } else {
+          document.title = "Halaman Tidak Ditemukan - SalamKoding.com";
+        }
         break;
     }
   }, [location.pathname]);
