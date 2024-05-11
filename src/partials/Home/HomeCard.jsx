@@ -3,10 +3,13 @@ import useQuery from "../../hooks/useQuery";
 import { CONST } from "../../utils/Constants";
 
 export default function HomeCard() {
+  // Menggunakan useQuery untuk mendapatkan data artikel
   const articles = useQuery(() => APIArticle.findArticles("desc", 1, 6));
 
+  // Destructuring data dari useQuery
   const { data } = articles;
 
+  // Fungsi untuk mengarahkan ke halaman detail artikel
   const handleArticleDetail = (id) => {
     window.location.href = `/article/${id}`;
   };

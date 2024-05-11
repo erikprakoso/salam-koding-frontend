@@ -10,16 +10,19 @@ export default function Article() {
   const sort = "desc";
   const [totalPages, setTotalPages] = useState(1);
 
+  // Menggunakan useQuery untuk mendapatkan data artikel
   const { data, meta, refetch } = useQuery(() =>
     APIArticle.findArticles(sort, page, pageSize)
   );
 
+  // Menggunakan useEffect untuk mengupdate total halaman
   useEffect(() => {
     if (meta) {
       setTotalPages(meta.pagination.pageCount);
     }
   }, [meta]);
 
+  // Fungsi untuk mengubah halaman
   const handlePageChange = (newPage) => {
     setPage(newPage);
     refetch(); // Memanggil refetch untuk memperbarui data

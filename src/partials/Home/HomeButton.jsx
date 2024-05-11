@@ -1,9 +1,12 @@
 import { IoIosArrowForward } from "react-icons/io";
 
 export default function HomeButton() {
+
+  // Fungsi untuk mengarahkan ke halaman artikel
   const handleArticle = () => {
     window.location.href = "/article";
   };
+  
   return (
     <div className="bg-gray-100 flex justify-center py-2">
       <button

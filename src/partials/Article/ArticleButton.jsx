@@ -11,6 +11,7 @@ export default function ArticleButton({
   totalPages,
   onPageChange,
 }) {
+  // Fungsi untuk mengubah halaman ke halaman sebelumnya
   const handlePrevPage = () => {
     console.log("Current page:", currentPage);
     if (currentPage > 1) {
@@ -18,6 +19,7 @@ export default function ArticleButton({
     }
   };
 
+  // Fungsi untuk mengubah halaman ke halaman selanjutnya
   const handleNextPage = () => {
     console.log("Current page:", currentPage);
     if (currentPage < totalPages) {

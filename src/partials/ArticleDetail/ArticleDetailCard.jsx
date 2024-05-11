@@ -10,9 +10,16 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FaCopy } from "react-icons/fa";
 
 export default function ArticleDetailCard() {
+  // Menggunakan useParams untuk mendapatkan id artikel
   const { id } = useParams();
+
+  // Menggunakan useQuery untuk mendapatkan data artikel berdasarkan id
   const article = useQuery(() => APIArticle.findArticleById(id));
+
+  // Destructuring data dari useQuery
   const { data } = article;
+
+  // Options for js-beautify
   const options = {
     indent_size: 2,
     space_in_empty_paren: true,
@@ -58,8 +65,6 @@ export default function ArticleDetailCard() {
       setCopiedStates(newCopiedStates);
     }, 1500);
   };
-
-  console.log(data);
 
   return (
     <div className="bg-gray-100">
