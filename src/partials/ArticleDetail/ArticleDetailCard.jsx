@@ -75,14 +75,48 @@ export default function ArticleDetailCard() {
               {data?.attributes?.title}
             </h2>
             <hr className="mt-2 border-gray-200" />
-            <p className="mt-1 text-md leading-8 text-gray-500">
-              {data?.attributes?.author}
-            </p>
+            <div className="flex items-center">
+              <img
+                src={
+                  data?.attributes?.author?.data?.attributes?.thumbnail &&
+                  CONST.IMG_URL_API +
+                    data?.attributes?.author?.data?.attributes?.thumbnail?.data
+                      ?.attributes?.url
+                }
+                alt="Author"
+                className="inline-block h-14 w-14 rounded-full"
+              />
+              <p className="ml-6 mt-2 text-md text-gray-500">
+                {/* Menampilkan fullname */}
+                <span className="font-bold text-md">
+                  {data?.attributes?.author?.data?.attributes?.fullname}
+                </span>
+                {/* Menampilkan position */}
+                <br />
+                <span className="italic text-sm">
+                  {data?.attributes?.author?.data?.attributes?.position}
+                </span>
+                <br />
+                {/* Menampilkan date */}
+                <span className="font-bold text-xs">
+                  {new Date(data?.attributes?.publishedAt).toLocaleDateString(
+                    "en-US",
+                    {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    }
+                  )}
+                </span>
+              </p>
+            </div>
+
             <div className="mt-4">
               <img
                 src={
                   data?.attributes?.thumbnail &&
-                  CONST.IMG_URL_API + data?.attributes?.thumbnail?.data?.attributes?.url
+                  CONST.IMG_URL_API +
+                    data?.attributes?.thumbnail?.data?.attributes?.url
                 }
                 alt="Front of men's Basic Tee in black."
                 className="mt-1 h-full w-full object-cover object-center lg:h-full lg:w-full rounded-xl"
