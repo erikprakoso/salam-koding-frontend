@@ -52,7 +52,7 @@ export default function ArticleCard({ data }) {
                       <h3 className="mt-4 text-sm font-medium text-gray-900">
                         <a
                           href="#"
-                          className="group-hover:underline cursor-pointer"
+                          className="cursor-pointer"
                           onClick={() => handleArticleDetail(item?.id)}
                         >
                           {item?.attributes?.title}
@@ -62,7 +62,7 @@ export default function ArticleCard({ data }) {
                       <div className="mt-2 flex items-center">
                         <a
                           href="#"
-                          className="group-hover:underline cursor-pointer"
+                          className="cursor-pointer"
                           onClick={() => handleAuthor(item?.attributes?.author?.data?.id)}
                         >
                           <span className="text-sm font-medium text-gray-900">
