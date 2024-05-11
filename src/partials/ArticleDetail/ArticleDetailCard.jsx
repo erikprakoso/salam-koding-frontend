@@ -19,8 +19,6 @@ export default function ArticleDetailCard() {
   // Destructuring data dari useQuery
   const { data } = article;
 
-  console.log(data);
-
   // Options for js-beautify
   const options = {
     indent_size: 2,
