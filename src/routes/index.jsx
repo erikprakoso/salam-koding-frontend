@@ -23,12 +23,11 @@ export default function SetupRoutes() {
       case "/search":
         document.title = "Pencarian - SalamKoding.com";
         break;
-      case "/author":
-        document.title = "Penulis - SalamKoding.com";
-        break;
       default:
         if (location.pathname.startsWith("/article/")) {
           document.title = "Detail Artikel - SalamKoding.com";
+        } else if (location.pathname.startsWith("/author/")) {
+          document.title = "Penulis - SalamKoding.com";
         } else {
           document.title = "Halaman Tidak Ditemukan - SalamKoding.com";
         }
