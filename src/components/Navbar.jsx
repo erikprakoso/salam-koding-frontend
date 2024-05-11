@@ -75,7 +75,7 @@ export default function Navbar() {
                   <input
                     type="text"
                     className="relative rounded bg-gray-100 text-gray-900 placeholder-gray-400 px-4 py-1 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                    placeholder="Search"
+                    placeholder="Cari"
                   />
                   <button
                     type="button"
@@ -93,7 +93,7 @@ export default function Navbar() {
                   onClick={() => setIsSearchOpen(true)}
                 >
                   <span className="absolute -inset-1.5" />
-                  <span className="sr-only">Search</span>
+                  <span className="sr-only">Cari</span>
                   <FaSearch className="h-6 w-6" />
                 </button>
               )}
@@ -112,7 +112,7 @@ export default function Navbar() {
             <input
               type="text"
               className="w-full px-3 py-2 rounded-md bg-gray-100 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-              placeholder="Search"
+              placeholder="Cari"
             />
           </div>
           <a
