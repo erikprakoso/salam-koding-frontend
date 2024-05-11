@@ -6,6 +6,7 @@ import Article from "../pages/Article";
 import ArticleDetail from "../pages/ArticleDetail";
 import PageNotFound from "../pages/PageNotFound";
 import Search from "../pages/Search";
+import Author from "../pages/Author";
 
 export default function SetupRoutes() {
   const location = useLocation();
@@ -21,6 +22,9 @@ export default function SetupRoutes() {
         break;
       case "/search":
         document.title = "Pencarian - SalamKoding.com";
+        break;
+      case "/author":
+        document.title = "Penulis - SalamKoding.com";
         break;
       default:
         if (location.pathname.startsWith("/article/")) {
@@ -39,6 +43,7 @@ export default function SetupRoutes() {
         <Route path="article" element={<Article />} />
         <Route path="article/:id" element={<ArticleDetail />} />
         <Route path="search" element={<SearchPage />} />
+        <Route path="author/:id" element={<Author />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>

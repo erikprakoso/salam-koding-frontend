@@ -8,9 +8,9 @@ export default function ArticleCard({ data }) {
     window.location.href = `/article/${id}`;
   };
 
-  // Fungsi untuk mengarahkan ke halaman profile
-  const handleProfile= (id) => {
-    window.location.href = `/profile/${id}`;
+  // Fungsi untuk mengarahkan ke halaman author
+  const handleAuthor= (id) => {
+    window.location.href = `/author/${id}`;
   }
 
   return (
@@ -63,7 +63,7 @@ export default function ArticleCard({ data }) {
                         <a
                           href="#"
                           className="group-hover:underline cursor-pointer"
-                          onClick={() => handleProfile(item?.attributes?.author?.data?.id)}
+                          onClick={() => handleAuthor(item?.attributes?.author?.data?.id)}
                         >
                           <span className="text-sm font-medium text-gray-900">
                             {
