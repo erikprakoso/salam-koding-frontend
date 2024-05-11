@@ -19,6 +19,10 @@ export default function HomeCard() {
     window.location.href = `/author/${id}`;
   };
 
+  const handleTag = (tag) => {
+    window.location.href = `/tag?tag=${tag}`;
+  }
+
   return (
     <>
       <div className="bg-gray-100">
@@ -51,6 +55,7 @@ export default function HomeCard() {
                           key={tag?.id}
                           type="button"
                           className={`bg-${tag?.attributes?.color}-100 hover:bg-${tag?.attributes?.color}-300 rounded-md px-3 py-1 text-sm font-medium text-${tag?.attributes?.color}-700 border-${tag?.attributes?.color}-300 border-2 cursor-pointer`}
+                          onClick={() => handleTag(tag?.attributes?.name)}
                         >
                           {tag?.attributes?.name}
                         </button>

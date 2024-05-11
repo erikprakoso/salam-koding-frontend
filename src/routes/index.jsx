@@ -7,6 +7,7 @@ import ArticleDetail from "../pages/ArticleDetail";
 import PageNotFound from "../pages/PageNotFound";
 import Search from "../pages/Search";
 import Author from "../pages/Author";
+import Tag from "../pages/Tag";
 
 export default function SetupRoutes() {
   const location = useLocation();
@@ -22,6 +23,9 @@ export default function SetupRoutes() {
         break;
       case "/search":
         document.title = "Pencarian - SalamKoding.com";
+        break;
+      case "/tag":
+        document.title = "Tag - SalamKoding.com";
         break;
       default:
         if (location.pathname.startsWith("/article/")) {
@@ -43,6 +47,7 @@ export default function SetupRoutes() {
         <Route path="article/:id" element={<ArticleDetail />} />
         <Route path="search" element={<SearchPage />} />
         <Route path="author/:id" element={<Author />} />
+        <Route path="tag" element={<TagPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>
@@ -54,4 +59,11 @@ function SearchPage() {
 
   // You can now use the `query` parameter in your component
   return <Search query={query} />;
+}
+
+function TagPage() {
+  const { tag } = useParams();
+
+  // You can now use the `tag` parameter in your component
+  return <Tag tag={tag} />;
 }

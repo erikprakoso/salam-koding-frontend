@@ -40,6 +40,20 @@ const APIArticle = {
       const { stack } = err;
       throw new ApiError(status, statusText, message, true, stack);
     }
+  },
+
+  async findArticlesByTag(sort, page, pageSize, tag) {
+    try {
+      const response = await axiosInstance.get(
+        `/articles?sort=publishedAt:${sort}&pagination[withCount]=true&pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=thumbnail&populate=tags&populate=author.thumbnail&filters[tags][name][$containsi]=${tag}`
+      );
+      return response.data;
+    } catch (err) {
+      const { status, statusText } = err.response;
+      const { message } = err.response.data.error;
+      const { stack } = err;
+      throw new ApiError(status, statusText, message, true, stack);
+    }
   }
 };
 

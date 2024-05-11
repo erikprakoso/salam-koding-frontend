@@ -1,7 +1,7 @@
 import { CONST } from "../../utils/Constants";
 import PropTypes from "prop-types";
 
-export default function SearchCard({data}) {
+export default function TagCard({data}) {
   // Fungsi untuk mengarahkan ke halaman detail artikel
   const handleArticleDetail = (id) => {
     window.location.href = `/article/${id}`;
@@ -11,10 +11,6 @@ export default function SearchCard({data}) {
   const handleAuthor = (id) => {
     window.location.href = `/author/${id}`;
   };
-
-  const handleTag = (tag) => {
-    window.location.href = `/tag?tag=${tag}`;
-  }
 
   return (
     <>
@@ -49,7 +45,6 @@ export default function SearchCard({data}) {
                             key={tag?.id}
                             type="button"
                             className={`bg-${tag?.attributes?.color}-100 hover:bg-${tag?.attributes?.color}-300 rounded-md px-3 py-1 text-sm font-medium text-${tag?.attributes?.color}-700 border-${tag?.attributes?.color}-300 border-2 cursor-pointer`}
-                            onClick={() => handleTag(tag?.attributes?.name)}
                           >
                             {tag?.attributes?.name}
                           </button>
@@ -105,6 +100,6 @@ export default function SearchCard({data}) {
   );
 }
 
-SearchCard.propTypes = {
+TagCard.propTypes = {
   data: PropTypes.array,
 };
