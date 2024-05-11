@@ -6,14 +6,13 @@ import useQuery from "../hooks/useQuery";
 
 export default function Article() {
   const [page, setPage] = useState(1);
-  const pageSize = 10;
+  const pageSize = 6;
   const sort = "desc";
   const [totalPages, setTotalPages] = useState(1);
 
-  const articles = useQuery(() =>
+  const { data, meta, refetch } = useQuery(() =>
     APIArticle.findArticles(sort, page, pageSize)
   );
-  const { data, meta } = articles;
 
   useEffect(() => {
     if (meta) {
@@ -23,16 +22,21 @@ export default function Article() {
 
   const handlePageChange = (newPage) => {
     setPage(newPage);
+    refetch(); // Memanggil refetch untuk memperbarui data
   };
 
   return (
     <>
-      <ArticleCard data={data} />
-      <ArticleButton
-        currentPage={page}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      {data && (
+        <>
+          <ArticleCard data={data} />
+          <ArticleButton
+            currentPage={page}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </>
+      )}
     </>
   );
 }

@@ -22,7 +22,7 @@ export default function ArticleButton({
   };
 
   return (
-    <div className="bg-gray-100 flex justify-center py-2 border-t border-gray-200 px-4 sm:px-6">
+    <div className="bg-gray-100 flex justify-center py-2 px-4 sm:px-6">
       <div>
         <nav
           className="isolate inline-flex -space-x-px rounded-md shadow-sm"
@@ -30,7 +30,7 @@ export default function ArticleButton({
         >
           <button
             onClick={handlePrevPage}
-            className={`relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 bg-white`}
+            className={`relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 bg-white mx-1`}
           >
             <span className="sr-only">Previous</span>
             <FaAngleLeft className="h-5 w-5" aria-hidden="true" />
