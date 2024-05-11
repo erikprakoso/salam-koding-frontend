@@ -3,7 +3,7 @@ import useQuery from "../../hooks/useQuery";
 import { CONST } from "../../utils/Constants";
 
 export default function HomeCard() {
-  const articles = useQuery(() => APIArticle.findArticles("desc", 1, 10));
+  const articles = useQuery(() => APIArticle.findArticles("desc", 1, 6));
 
   const { data } = articles;
 
