@@ -35,11 +35,14 @@ export default function Search() {
   return (
     <>
       <SearchCard data={data} />
+      {/* Menampilkan SearchButton */}
+      {totalPages > 1 && (
       <SearchButton
         currentPage={page}
         totalPages={totalPages}
         onPageChange={handlePageChange}
       />
+      )}
     </>
   );
 }
