@@ -1,24 +1,13 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
-import useQuery from "../../hooks/useQuery";
-import APIArticle from "../../services/article.service";
 import { CONST } from "../../utils/Constants";
 import { js_beautify } from "js-beautify";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FaCopy } from "react-icons/fa";
+import PropTypes from "prop-types";
 
-export default function ArticleDetailCard() {
-  // Menggunakan useParams untuk mendapatkan id artikel
-  const { id } = useParams();
-
-  // Menggunakan useQuery untuk mendapatkan data artikel berdasarkan id
-  const article = useQuery(() => APIArticle.findArticleById(id));
-
-  // Destructuring data dari useQuery
-  const { data } = article;
-
+export default function ArticleDetailCard({ data }) {
   // Options for js-beautify
   const options = {
     indent_size: 2,
@@ -185,3 +174,8 @@ export default function ArticleDetailCard() {
     </div>
   );
 }
+
+// Prop types
+ArticleDetailCard.propTypes = {
+  data: PropTypes.object,
+};
