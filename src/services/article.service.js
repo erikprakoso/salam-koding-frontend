@@ -5,7 +5,7 @@ const APIArticle = {
   async findArticles(sort, page, pageSize) {
     try {
       const response = await axiosInstance.get(
-        `/articles?sort=publishedAt:${sort}&pagination[withCount]=true&pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=thumbnail&populate=tags`
+        `/articles?sort=publishedAt:${sort}&pagination[withCount]=true&pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=thumbnail&populate=tags&populate=author.thumbnail`
       );
       return response.data;
     } catch (err) {

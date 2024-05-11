@@ -2,9 +2,16 @@ import { CONST } from "../../utils/Constants";
 import PropTypes from "prop-types";
 
 export default function ArticleCard({ data }) {
+
+  // Fungsi untuk mengarahkan ke halaman detail artikel
   const handleArticleDetail = (id) => {
     window.location.href = `/article/${id}`;
   };
+
+  // Fungsi untuk mengarahkan ke halaman profile
+  const handleProfile= (id) => {
+    window.location.href = `/profile/${id}`;
+  }
 
   return (
     <>
@@ -53,9 +60,18 @@ export default function ArticleCard({ data }) {
                       </h3>
                       <hr className="mt-2 border-gray-200" /> {/* Divider */}
                       <div className="mt-2 flex items-center">
-                        <span className="text-sm font-medium text-gray-900">
-                          {item?.attributes?.author}
-                        </span>
+                        <a
+                          href="#"
+                          className="group-hover:underline cursor-pointer"
+                          onClick={() => handleProfile(item?.attributes?.author?.data?.id)}
+                        >
+                          <span className="text-sm font-medium text-gray-900">
+                            {
+                              item?.attributes?.author?.data?.attributes
+                                ?.fullname
+                            }
+                          </span>
+                        </a>
                       </div>
                     </div>
                   </div>
