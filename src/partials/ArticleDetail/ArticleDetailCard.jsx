@@ -59,6 +59,8 @@ export default function ArticleDetailCard() {
     }, 1500);
   };
 
+  console.log(data);
+
   return (
     <div className="bg-gray-100">
       <div className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
@@ -75,7 +77,7 @@ export default function ArticleDetailCard() {
               <img
                 src={
                   data?.attributes?.thumbnail &&
-                  CONST.IMG_URL_API + data?.attributes?.thumbnail?.url
+                  CONST.IMG_URL_API + data?.attributes?.thumbnail?.data?.attributes?.url
                 }
                 alt="Front of men's Basic Tee in black."
                 className="mt-1 h-full w-full object-cover object-center lg:h-full lg:w-full rounded-xl"

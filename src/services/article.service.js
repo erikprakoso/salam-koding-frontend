@@ -18,7 +18,7 @@ const APIArticle = {
 
   async findArticleById(id) {
     try {
-      const response = await axiosInstance.get(`/articles/view/${id}`);
+      const response = await axiosInstance.get(`/articles/${id}?populate=tags&populate=thumbnail`);
       return response.data;
     } catch (err) {
       const { status, statusText } = err.response;
