@@ -1,6 +1,10 @@
 // ArticleButton.js
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import PropTypes from "prop-types";
+import { 
+  IoIosArrowForward,
+  IoIosArrowBack, 
+} from "react-icons/io";
 
 export default function ArticleButton({
   currentPage,
@@ -30,17 +34,15 @@ export default function ArticleButton({
         >
           <button
             onClick={handlePrevPage}
-            className={`relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 bg-white mx-1`}
+            className="flex items-center bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 cursor-pointer mx-1"
           >
-            <span className="sr-only">Previous</span>
-            <FaAngleLeft className="h-5 w-5" aria-hidden="true" />
+            <IoIosArrowBack className="mr-1" /> Sebelumnya
           </button>
           <button
             onClick={handleNextPage}
-            className={`relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 bg-white`}
+            className="flex items-center bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 cursor-pointer"
           >
-            <span className="sr-only">Next</span>
-            <FaAngleRight className="h-5 w-5" aria-hidden="true" />
+            Selanjutnya <IoIosArrowForward className="ml-1" />
           </button>
         </nav>
       </div>
