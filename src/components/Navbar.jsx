@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { IoReorderThree, IoClose } from "react-icons/io5";
+import { useLocation } from "react-router-dom";
 
 export default function Navbar() {
+  const location = useLocation();
+  console.log("Current location:", location.pathname);
   // Menambahkan state untuk mengontrol visibilitas menu mobile
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // Menambahkan state untuk mengontrol visibilitas input pencarian
@@ -24,6 +27,10 @@ export default function Navbar() {
 
   const handleHome = () => {
     window.location.href = "/";
+  };
+
+  const handleArticle = () => {
+    window.location.href = "/article";
   };
 
   return (
@@ -57,11 +64,23 @@ export default function Navbar() {
               <div className="flex space-x-4">
                 <a
                   href="#"
-                  className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                  className={`bg-${location.pathname === '/' ? 'gray' : ''}-900 text-${location.pathname === '/' ? 'white' : 'gray-500'} rounded-md px-3 py-2 text-sm font-medium`}
                   aria-current="page"
                   onClick={handleHome}
                 >
                   Beranda
+                </a>
+              </div>
+            </div>
+            <div className="hidden sm:ml-2 sm:block">
+              <div className="flex space-x-4">
+                <a
+                  href="#"
+                  className={`bg-${location.pathname === '/article' ? 'gray' : ''}-900 text-${location.pathname === '/article' ? 'white' : 'gray-500'} rounded-md px-3 py-2 text-sm font-medium`}
+                  aria-current="page"
+                  onClick={handleArticle}
+                >
+                  Artikel
                 </a>
               </div>
             </div>
@@ -122,6 +141,13 @@ export default function Navbar() {
             onClick={handleHome}
           >
             Beranda
+          </a>
+          <a
+            href="#"
+            className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+            onClick={handleArticle}
+          >
+            Artikel
           </a>
         </div>
       </div>
