@@ -1,10 +1,11 @@
+// SearchButton.js
 import PropTypes from "prop-types";
 import { 
   IoIosArrowForward,
   IoIosArrowBack, 
 } from "react-icons/io";
 
-export default function ArticleButton({
+export default function SearchButton({
   currentPage,
   totalPages,
   onPageChange,
@@ -48,7 +49,7 @@ export default function ArticleButton({
   );
 }
 
-ArticleButton.propTypes = {
+SearchButton.propTypes = {
   currentPage: PropTypes.number.isRequired,
   totalPages: PropTypes.number.isRequired,
   onPageChange: PropTypes.func.isRequired,

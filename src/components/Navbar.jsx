@@ -12,6 +12,8 @@ export default function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   // Menambahkan state untuk menentukan apakah layar adalah tampilan mobile atau desktop
   const [isMobile, setIsMobile] = useState(false);
+  // Menambahkan state untuk menyimpan nilai input pencarian
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,6 +38,15 @@ export default function Navbar() {
   // Fungsi untuk mengarahkan ke halaman artikel
   const handleArticle = () => {
     window.location.href = "/article";
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    window.location.href = `/search?query=${searchValue}`;
   };
 
   return (
@@ -69,7 +80,11 @@ export default function Navbar() {
               <div className="flex space-x-4">
                 <a
                   href="#"
-                  className={`bg-${location.pathname === '/' ? 'gray' : ''}-900 text-${location.pathname === '/' ? 'white' : 'gray-500'} rounded-md px-3 py-2 text-sm font-medium`}
+                  className={`bg-${
+                    location.pathname === "/" ? "gray" : ""
+                  }-900 text-${
+                    location.pathname === "/" ? "white" : "gray-500"
+                  } rounded-md px-3 py-2 text-sm font-medium`}
                   aria-current="page"
                   onClick={handleHome}
                 >
@@ -81,7 +96,11 @@ export default function Navbar() {
               <div className="flex space-x-4">
                 <a
                   href="#"
-                  className={`bg-${location.pathname === '/article' ? 'gray' : ''}-900 text-${location.pathname === '/article' ? 'white' : 'gray-500'} rounded-md px-3 py-2 text-sm font-medium`}
+                  className={`bg-${
+                    location.pathname === "/article" ? "gray" : ""
+                  }-900 text-${
+                    location.pathname === "/article" ? "white" : "gray-500"
+                  } rounded-md px-3 py-2 text-sm font-medium`}
                   aria-current="page"
                   onClick={handleArticle}
                 >
@@ -96,11 +115,15 @@ export default function Navbar() {
               {/* Menambahkan input pencarian */}
               {isSearchOpen ? (
                 <div className="relative">
-                  <input
-                    type="text"
-                    className="relative rounded bg-gray-100 text-gray-900 placeholder-gray-400 px-4 py-1 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                    placeholder="Cari"
-                  />
+                  <form onSubmit={handleSearchSubmit}>
+                    <input
+                      type="text"
+                      value={searchValue}
+                      onChange={handleSearchChange}
+                      className="relative rounded bg-gray-100 text-gray-900 placeholder-gray-400 px-4 py-1 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                      placeholder="Cari"
+                    />
+                  </form>
                   <button
                     type="button"
                     className="absolute inset-y-0 right-0 flex items-center pr-3 focus:outline-none"
@@ -133,15 +156,23 @@ export default function Navbar() {
         <div className="space-y-1 px-2 pb-3 pt-2">
           {/* Tambahkan input pencarian di sini */}
           <div className="relative">
-            <input
-              type="text"
-              className="w-full px-3 py-2 rounded-md bg-gray-100 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-              placeholder="Cari"
-            />
+            <form onSubmit={handleSearchSubmit}>
+              <input
+                type="text"
+                value={searchValue}
+                onChange={handleSearchChange}
+                className="w-full px-3 py-2 rounded-md bg-gray-100 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                placeholder="Cari"
+              />
+            </form>
           </div>
           <a
             href="#"
-            className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+            className={`bg-
+            ${location.pathname === "/" ? "gray" : ""}
+            -900 text-
+            ${location.pathname === "/" ? "white" : "gray-500"}
+            block rounded-md px-3 py-2 text-base font-medium`}
             aria-current="page"
             onClick={handleHome}
           >
@@ -149,7 +180,11 @@ export default function Navbar() {
           </a>
           <a
             href="#"
-            className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+            className={`bg-
+            ${location.pathname === "/article" ? "gray" : ""}
+            -900 text-
+            ${location.pathname === "/article" ? "white" : "gray-500"}
+            block rounded-md px-3 py-2 text-base font-medium`}
             onClick={handleArticle}
           >
             Artikel

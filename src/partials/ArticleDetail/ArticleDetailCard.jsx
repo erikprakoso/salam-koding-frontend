@@ -14,7 +14,7 @@ export default function ArticleDetailCard() {
   const { id } = useParams();
 
   // Menggunakan useQuery untuk mendapatkan data artikel berdasarkan id
-  const article = useQuery(() => APIArticle.findArticleById(id));
+  const article = useQuery(() => APIArticle.findArticlesById(id));
 
   // Destructuring data dari useQuery
   const { data } = article;
