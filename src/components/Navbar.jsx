@@ -4,8 +4,8 @@ import { IoReorderThree, IoClose } from "react-icons/io5";
 import { useLocation } from "react-router-dom";
 
 export default function Navbar() {
+  // Menggunakan useLocation untuk mendapatkan informasi lokasi dari router
   const location = useLocation();
-  console.log("Current location:", location.pathname);
   // Menambahkan state untuk mengontrol visibilitas menu mobile
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // Menambahkan state untuk mengontrol visibilitas input pencarian
@@ -15,20 +15,25 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleResize = () => {
+      // Mengubah state isMobile berdasarkan lebar layar
       setIsMobile(window.innerWidth < 640); // Ganti 640 dengan nilai batas ukuran layar yang sesuai
     };
     // Panggil handleResize saat dimuat dan diresapi kembali
     handleResize();
+    // Tambahkan event listener untuk menangani perubahan ukuran layar
     window.addEventListener("resize", handleResize);
     return () => {
+      // Hapus event listener saat komponen di-unmount
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
+  // Fungsi untuk mengarahkan ke halaman beranda
   const handleHome = () => {
     window.location.href = "/";
   };
 
+  // Fungsi untuk mengarahkan ke halaman artikel
   const handleArticle = () => {
     window.location.href = "/article";
   };
