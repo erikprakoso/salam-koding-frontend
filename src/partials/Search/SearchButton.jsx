@@ -1,25 +1,23 @@
 // SearchButton.js
 import PropTypes from "prop-types";
-import { 
-  IoIosArrowForward,
-  IoIosArrowBack, 
-} from "react-icons/io";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 export default function SearchButton({
   currentPage,
   totalPages,
   onPageChange,
 }) {
-  // Fungsi untuk mengubah halaman ke halaman sebelumnya
+  const isPrevDisabled = currentPage === 1;
+  const isNextDisabled = currentPage === totalPages;
+
   const handlePrevPage = () => {
-    if (currentPage > 1) {
+    if (!isPrevDisabled) {
       onPageChange(currentPage - 1);
     }
   };
 
-  // Fungsi untuk mengubah halaman ke halaman selanjutnya
   const handleNextPage = () => {
-    if (currentPage < totalPages) {
+    if (!isNextDisabled) {
       onPageChange(currentPage + 1);
     }
   };
@@ -33,13 +31,19 @@ export default function SearchButton({
         >
           <button
             onClick={handlePrevPage}
-            className="flex items-center bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 cursor-pointer mx-1"
+            className={`flex items-center bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 cursor-pointer mx-1 ${
+              isPrevDisabled ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={isPrevDisabled}
           >
             <IoIosArrowBack className="mr-1" /> Sebelumnya
           </button>
           <button
             onClick={handleNextPage}
-            className="flex items-center bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 cursor-pointer"
+            className={`flex items-center bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 cursor-pointer ${
+              isNextDisabled ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={isNextDisabled}
           >
             Selanjutnya <IoIosArrowForward className="ml-1" />
           </button>
