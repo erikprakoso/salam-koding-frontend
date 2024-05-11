@@ -7,10 +7,11 @@ import useQuery from "../hooks/useQuery";
 export default function Article() {
   const [page, setPage] = useState(1);
   const pageSize = 10;
+  const sort = "desc";
   const [totalPages, setTotalPages] = useState(1);
 
   const articles = useQuery(() =>
-    APIArticle.findArticlesPaginate(page, pageSize)
+    APIArticle.findArticles(sort, page, pageSize)
   );
   const { data, meta } = articles;
 
