@@ -1,7 +1,7 @@
 import { CONST } from "../../utils/Constants";
 import PropTypes from "prop-types";
 
-export default function TagCard({data}) {
+export default function CategoryCard({data}) {
   // Fungsi untuk mengarahkan ke halaman detail artikel
   const handleArticleDetail = (id) => {
     window.location.href = `/article/${id}`;
@@ -100,6 +100,6 @@ export default function TagCard({data}) {
   );
 }
 
-TagCard.propTypes = {
+CategoryCard.propTypes = {
   data: PropTypes.array,
 };

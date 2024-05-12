@@ -1,8 +1,8 @@
-// TagButton.js
+// CategoryButton.js
 import PropTypes from "prop-types";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
-export default function TagButton({
+export default function CategoryButton({
   currentPage,
   totalPages,
   onPageChange,
@@ -53,7 +53,7 @@ export default function TagButton({
   );
 }
 
-TagButton.propTypes = {
+CategoryButton.propTypes = {
   currentPage: PropTypes.number.isRequired,
   totalPages: PropTypes.number.isRequired,
   onPageChange: PropTypes.func.isRequired,

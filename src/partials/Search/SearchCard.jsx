@@ -12,9 +12,9 @@ export default function SearchCard({data}) {
     window.location.href = `/author/${id}`;
   };
 
-  const handleTag = (tag) => {
-    window.location.href = `/tag?tag=${tag}`;
-  }
+  const handleCategory = (category) => {
+    window.location.href = `/category?category=${category}`;
+  };
 
   return (
     <>
@@ -44,14 +44,14 @@ export default function SearchCard({data}) {
                   <div className="p-4">
                     <div className="mt-4 flex justify-between">
                       <div>
-                        {item?.attributes?.tags?.data.map((tag) => (
+                        {item?.attributes?.categories?.data.map((category) => (
                           <button
-                            key={tag?.id}
+                            key={category?.id}
                             type="button"
-                            className={`bg-${tag?.attributes?.color}-100 hover:bg-${tag?.attributes?.color}-300 rounded-md px-3 py-1 text-sm font-medium text-${tag?.attributes?.color}-700 border-${tag?.attributes?.color}-300 border-2 cursor-pointer`}
-                            onClick={() => handleTag(tag?.attributes?.name)}
+                            className={`bg-${category?.attributes?.color}-100 hover:bg-${category?.attributes?.color}-300 rounded-md px-3 py-1 text-sm font-medium text-${category?.attributes?.color}-700 border-${category?.attributes?.color}-300 border-2 cursor-pointer`}
+                            onClick={() => handleCategory(category?.attributes?.name)}
                           >
-                            {tag?.attributes?.name}
+                            {category?.attributes?.name}
                           </button>
                         ))}
                         <h3 className="mt-4 text-sm font-medium text-gray-900">

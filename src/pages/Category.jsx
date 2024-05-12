@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import APIArticle from "../services/article.service";
 import useQuery from "../hooks/useQuery";
-import TagCard from "../partials/Tag/TagCard";
+import CategoryCard from "../partials/Category/CategoryCard";
 import { useSearchParams } from "react-router-dom";
-import TagButton from "../partials/Tag/TagButton";
+import CategoryButton from "../partials/Category/CategoryButton";
 
-export default function Search() {
+export default function Category() {
   const [page, setPage] = useState(1);
   const pageSize = 6;
   const sort = "desc";
@@ -13,11 +13,11 @@ export default function Search() {
 
     // Menggunakan useSearchParams untuk mendapatkan query dari URL
     const [searchParams] = useSearchParams();
-    const tag = searchParams.get("tag");
+    const category = searchParams.get("category");
 
   // Menggunakan useQuery untuk mendapatkan data artikel
   const { data, meta, refetch } = useQuery(() =>
-    APIArticle.findArticlesByTag(sort, page, pageSize, tag)
+    APIArticle.findArticlesByCategory(sort, page, pageSize, category)
   );
 
     // Menggunakan useEffect untuk mengupdate total halaman
@@ -34,10 +34,10 @@ export default function Search() {
     };
   return (
     <>
-      <TagCard data={data} />
-      {/* Menampilkan TagButton */}
+      <CategoryCard data={data} />
+      {/* Menampilkan CategoryButton */}
       {totalPages > 1 && (
-      <TagButton
+      <CategoryButton
         currentPage={page}
         totalPages={totalPages}
         onPageChange={handlePageChange}

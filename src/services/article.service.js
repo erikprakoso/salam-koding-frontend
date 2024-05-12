@@ -5,7 +5,7 @@ const APIArticle = {
   async findArticles(sort, page, pageSize) {
     try {
       const response = await axiosInstance.get(
-        `/articles?sort=publishedAt:${sort}&pagination[withCount]=true&pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=thumbnail&populate=tags&populate=author.thumbnail`
+        `/articles?sort=publishedAt:${sort}&pagination[withCount]=true&pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=thumbnail&populate=categories&populate=author.thumbnail`
       );
       return response.data;
     } catch (err) {
@@ -18,7 +18,7 @@ const APIArticle = {
 
   async findArticlesById(id) {
     try {
-      const response = await axiosInstance.get(`/articles/${id}?populate=tags&populate=thumbnail&populate=author.thumbnail`);
+      const response = await axiosInstance.get(`/articles/${id}?populate=categories&populate=thumbnail&populate=author.thumbnail`);
       return response.data;
     } catch (err) {
       const { status, statusText } = err.response;
@@ -31,7 +31,7 @@ const APIArticle = {
   async findArticlesByTitle(sort, page, pageSize, title) {
     try {
       const response = await axiosInstance.get(
-        `/articles?sort=publishedAt:${sort}&pagination[withCount]=true&pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=thumbnail&populate=tags&populate=author.thumbnail&filters[title][$containsi]=${title}`
+        `/articles?sort=publishedAt:${sort}&pagination[withCount]=true&pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=thumbnail&populate=categories&populate=author.thumbnail&filters[title][$containsi]=${title}`
       );
       return response.data;
     } catch (err) {
@@ -42,10 +42,10 @@ const APIArticle = {
     }
   },
 
-  async findArticlesByTag(sort, page, pageSize, tag) {
+  async findArticlesByCategory(sort, page, pageSize, category) {
     try {
       const response = await axiosInstance.get(
-        `/articles?sort=publishedAt:${sort}&pagination[withCount]=true&pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=thumbnail&populate=tags&populate=author.thumbnail&filters[tags][name][$containsi]=${tag}`
+        `/articles?sort=publishedAt:${sort}&pagination[withCount]=true&pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=thumbnail&populate=categories&populate=author.thumbnail&filters[categories][name][$containsi]=${category}`
       );
       return response.data;
     } catch (err) {
